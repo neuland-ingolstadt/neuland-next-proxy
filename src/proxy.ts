@@ -21,15 +21,9 @@ const fetch = (...args: [RequestInfo, RequestInit?]): Promise<FetchResponse> =>
 const app: express.Express = express()
 
 const PORT: number = Number.parseInt(process.env.PORT || '3001', 10)
-const TARGET_HOST: string | undefined = process.env.TARGET_HOST
+const TARGET_HOST: string = process.env.TARGET_HOST || 'hiplan.thi.de'
 
 const PROXY_URL = `http://localhost:${PORT}`
-
-if (!TARGET_HOST) {
-  console.error('TARGET_HOST environment variable is required')
-  process.exit(1)
-}
-
 const TARGET_URL = `https://${TARGET_HOST}`
 
 app.use(cors())

@@ -11,6 +11,28 @@ This proxy is designed to bypass CORS (Cross-Origin Resource Sharing) restrictio
 
 ## Installation
 
+### Using Docker (Recommended)
+
+The easiest way to run the proxy is using Docker:
+
+```bash
+docker run -p 3001:3001 ghcr.io/neuland-ingolstadt/neuland-next-proxy:latest
+```
+
+With a custom target host:
+
+```bash
+docker run -p 3001:3001 -e TARGET_HOST=custom.api.com ghcr.io/neuland-ingolstadt/neuland-next-proxy:latest
+```
+
+Or with a custom port:
+
+```bash
+docker run -p 8080:8080 -e PORT=8080 ghcr.io/neuland-ingolstadt/neuland-next-proxy:latest
+```
+
+### Manual Installation
+
 ```bash
 # Install dependencies
 pnpm install
@@ -18,7 +40,20 @@ pnpm install
 
 ## Usage
 
-### Start the Server
+### Using Docker
+
+Run the proxy with Docker:
+
+```bash
+docker run -p 3001:3001 ghcr.io/neuland-ingolstadt/neuland-next-proxy:latest
+```
+
+Optional environment variables:
+
+- `TARGET_HOST`: The target API hostname (default: `hiplan.thi.de`)
+- `PORT`: The port to run the proxy on (default: `3001`)
+
+### Start the Server Manually
 
 **Development mode** (with auto-reload):
 
